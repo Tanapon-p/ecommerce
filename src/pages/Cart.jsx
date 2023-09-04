@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
@@ -161,10 +161,37 @@ const Button = styled.button`
 const Cart = () => {
   const [count, setCount] = useState(1);
   const [countSecond, setCountSecond] = useState(1);
-  let subTotal = (
-    count * popularProducts[15].price +
-    countSecond * popularProducts[12].price
-  ).toFixed(2);
+  const [discount, setDiscount] = useState(0);
+
+  // let discountShipping = 0;
+
+  let subTotal =
+    count * popularProducts[15].price + countSecond * popularProducts[12].price;
+
+  const shippingFee = 5.9;
+  let total = subTotal + shippingFee;
+
+  useEffect(() => {
+    if (subTotal >= 50) {
+      setDiscount(shippingFee);
+    } else {
+      setDiscount(0);
+    }
+  }, [subTotal]);
+
+  // function discountCheck() {
+  //   if (subTotal > 50) {
+  //     setDiscount(true);
+  //   } else {
+  //     setDiscount(false);
+  //   }
+  //   if (setDiscount) {
+  //     discountShipping = 5.9;
+  //   } else {
+  //     discountShipping = 0;
+  //   }
+  //   return discountShipping
+  // }
 
   return (
     <Container>
@@ -263,20 +290,20 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>${subTotal}</SummaryItemPrice>
+              <SummaryItemPrice>${subTotal.toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+              <SummaryItemPrice>$ {shippingFee.toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+              <SummaryItemPrice>$ {(-discount).toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>
-                $ {(subTotal - 5.9).toFixed(2)}
+                $ {(total - discount).toFixed(2)}
               </SummaryItemPrice>
             </SummaryItem>
             <Button style={{ cursor: "pointer" }}>CHECKOUT NOW</Button>
