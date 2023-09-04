@@ -174,7 +174,10 @@ const Cart = () => {
         <Title>YOUR BAG</Title>
         <Top>
           <TopBotton>
-            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            <Link
+              to="/productlist/1"
+              style={{ textDecoration: "none", color: "black" }}
+            >
               CONTINUE SHOPPING
             </Link>
           </TopBotton>
@@ -276,7 +279,7 @@ const Cart = () => {
                 $ {(subTotal - 5.9).toFixed(2)}
               </SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+            <Button style={{ cursor: "pointer" }}>CHECKOUT NOW</Button>
           </Summary>
         </Bottom>
       </Wrapper>

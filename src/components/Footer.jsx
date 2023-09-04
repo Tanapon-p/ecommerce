@@ -97,16 +97,16 @@ const Footer = () => {
           ad.
         </Desc>
         <SocialContainer>
-          <SocialIcon color="3B5999">
+          <SocialIcon color="3B5999" style={{ cursor: "pointer" }}>
             <Facebook />
           </SocialIcon>
-          <SocialIcon color="E4405F">
+          <SocialIcon color="E4405F" style={{ cursor: "pointer" }}>
             <Instagram />
           </SocialIcon>
-          <SocialIcon color="55ACEE">
+          <SocialIcon color="55ACEE" style={{ cursor: "pointer" }}>
             <Twitter />
           </SocialIcon>
-          <SocialIcon color="E60023">
+          <SocialIcon color="E60023" style={{ cursor: "pointer" }}>
             <Pinterest />
           </SocialIcon>
         </SocialContainer>
@@ -114,9 +114,17 @@ const Footer = () => {
       <Center>
         <Title>Useful Links</Title>
         <List>
-          <ListItem><Link to="/" style={{ textDecoration: "none", color: "black" }}>Home</Link></ListItem>
-          <ListItem><Link to="/cart" style={{ textDecoration: "none", color: "black" }}>Cart</Link></ListItem>
-          <ListItem>Man Fashion</ListItem>
+          <ListItem>
+            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              Home
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/cart" style={{ textDecoration: "none", color: "black" }}>
+              Cart
+            </Link>
+          </ListItem>
+
           <ListItem>Woman Fashion</ListItem>
           <ListItem>Accessories</ListItem>
           <ListItem>My Account</ListItem>
@@ -129,7 +137,7 @@ const Footer = () => {
         <Title>Contact</Title>
         <ContactItem>
           <Room style={{ marginRight: "10px" }} />
-          622 Dixie Path , South Tobinchester 98336
+          123/45 Kanchanapisek Road , Bangkae 10160
         </ContactItem>
         <ContactItem>
           <Phone style={{ marginRight: "10px" }} />

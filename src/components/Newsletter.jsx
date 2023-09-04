@@ -45,6 +45,12 @@ const Button = styled.button`
   border: none;
   background-color: teal;
   color: white;
+
+  transition: all 0.5s ease;
+  &:hover {
+    background-color: #015858;
+  }
+
 `;
 
 const Newsletter = () => {
@@ -54,7 +60,7 @@ const Newsletter = () => {
       <Desc>Get Timely updates from your favourite products.</Desc>
       <InputContainer>
         <Input placeholder="Your email" />
-        <Button>
+        <Button style={{cursor: 'pointer'}}>
           <Send />
         </Button>
       </InputContainer>
