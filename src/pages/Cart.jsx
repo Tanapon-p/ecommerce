@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
 import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Add, Remove } from "@material-ui/icons";
 import { mobile } from "../responsive";
+import { popularProducts } from "../data";
+import { Link } from "react-router-dom";
 
 const Container = styled.div``;
 
@@ -157,6 +159,13 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  const [count, setCount] = useState(1);
+  const [countSecond, setCountSecond] = useState(1);
+  let subTotal = (
+    count * popularProducts[15].price +
+    countSecond * popularProducts[12].price
+  ).toFixed(2);
+
   return (
     <Container>
       <Navbar />
@@ -164,7 +173,11 @@ const Cart = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopBotton>CONTINUE SHOPPING</TopBotton>
+          <TopBotton>
+            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              CONTINUE SHOPPING
+            </Link>
+          </TopBotton>
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist(0)</TopText>
@@ -175,41 +188,49 @@ const Cart = () => {
           <Info>
             <Product>
               <ProductDetail>
-                <Image src="https://i.pinimg.com/564x/35/b1/aa/35b1aa8401421ecd3117f3008fc8135f.jpg" />
+                <Image src={popularProducts[15].img} />
                 <Details>
                   <ProductName>
-                    <b>Product:</b> JESSIE THUNDER SKIRT
+                    <b>Product:</b> {popularProducts[15].name}
                   </ProductName>
                   <ProductId>
                     <b>ID:</b> 18466787239
                   </ProductId>
                   <ProductColor color="black" />
                   <ProductSize>
-                    <b>Size:</b> 35
+                    <b>Size:</b> M
                   </ProductSize>
                 </Details>
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
+                  <Remove
+                    onClick={() => count > 1 && setCount(count - 1)}
+                    style={{ cursor: "pointer" }}
+                  />
+                  <ProductAmount>{count}</ProductAmount>
+                  <Add
+                    onClick={() => setCount(count + 1)}
+                    style={{ cursor: "pointer" }}
+                  />
                 </ProductAmountContainer>
-                <ProductPrice>$ 30</ProductPrice>
+                <ProductPrice>
+                  $ {count * popularProducts[15].price}
+                </ProductPrice>
               </PriceDetail>
             </Product>
             <Hr />
             <Product>
               <ProductDetail>
-                <Image src="https://i.pinimg.com/564x/b8/84/d9/b884d9c62fe181323d6767c4b2c9d531.jpg" />
+                <Image src={popularProducts[12].img} />
                 <Details>
                   <ProductName>
-                    <b>Product:</b> LOVELY SHOES
+                    <b>Product:</b> {popularProducts[12].name}
                   </ProductName>
                   <ProductId>
                     <b>ID:</b> 548231
                   </ProductId>
-                  <ProductColor color="black" />
+                  <ProductColor color="#eee" />
                   <ProductSize>
                     <b>Size:</b> 36
                   </ProductSize>
@@ -217,11 +238,21 @@ const Cart = () => {
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
+                  <Remove
+                    onClick={() =>
+                      countSecond > 1 && setCountSecond(countSecond - 1)
+                    }
+                    style={{ cursor: "pointer" }}
+                  />
+                  <ProductAmount>{countSecond}</ProductAmount>
+                  <Add
+                    onClick={() => setCountSecond(countSecond + 1)}
+                    style={{ cursor: "pointer" }}
+                  />
                 </ProductAmountContainer>
-                <ProductPrice>$ 15</ProductPrice>
+                <ProductPrice>
+                  $ {countSecond * popularProducts[12].price}
+                </ProductPrice>
               </PriceDetail>
             </Product>
           </Info>
@@ -229,7 +260,7 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>${subTotal}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -241,7 +272,9 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>
+                $ {(subTotal - 5.9).toFixed(2)}
+              </SummaryItemPrice>
             </SummaryItem>
             <Button>CHECKOUT NOW</Button>
           </Summary>

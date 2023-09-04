@@ -131,7 +131,7 @@ export const popularProducts = [
     id: 13,
     name: "Fashion Lace Leather Boots",
     img: "https://i.pinimg.com/564x/b5/ea/23/b5ea23c60e670cf9cee4aab08320c807.jpg",
-    price: 10,
+    price: 9.99,
     desc: loremIpsum({ count: 7 }),
   },
   {
@@ -152,7 +152,7 @@ export const popularProducts = [
     id: 16,
     name: "Casual Women Suit",
     img: "https://i.pinimg.com/564x/f7/58/ed/f758ed2fdc22bb8b7292f1c6b2224f57.jpg",
-    price: 10,
+    price: 14.99,
     desc: loremIpsum({ count: 7 }),
   },
 ];

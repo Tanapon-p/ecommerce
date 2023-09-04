@@ -11,6 +11,8 @@ import {
 import styled from "styled-components";
 import { mobile } from "../responsive";
 
+import { Link } from "react-router-dom";
+
 const Container = styled.div`
   display: flex;
   ${mobile({ flexDirection: "column" })}
@@ -112,8 +114,8 @@ const Footer = () => {
       <Center>
         <Title>Useful Links</Title>
         <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
+          <ListItem><Link to="/" style={{ textDecoration: "none", color: "black" }}>Home</Link></ListItem>
+          <ListItem><Link to="/cart" style={{ textDecoration: "none", color: "black" }}>Cart</Link></ListItem>
           <ListItem>Man Fashion</ListItem>
           <ListItem>Woman Fashion</ListItem>
           <ListItem>Accessories</ListItem>
