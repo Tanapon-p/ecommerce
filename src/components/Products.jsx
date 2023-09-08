@@ -13,6 +13,7 @@ const Container = styled.div`
 const Products = () => {
   return (
     <Container>
+      {/* Pass poppularProducts Props(โดยให้ Props ชื่อว่า Item) into Product Component */}
       {popularProducts.map((item) => (
         <Product item={item} key={item.id} />
       ))}

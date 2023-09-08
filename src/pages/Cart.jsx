@@ -245,7 +245,7 @@ const Cart = () => {
                   />
                 </ProductAmountContainer>
                 <ProductPrice>
-                  $ {count * popularProducts[15].price}
+                  $ {(count * popularProducts[15].price).toFixed(2)}
                 </ProductPrice>
               </PriceDetail>
             </Product>
@@ -281,7 +281,7 @@ const Cart = () => {
                   />
                 </ProductAmountContainer>
                 <ProductPrice>
-                  $ {countSecond * popularProducts[12].price}
+                  $ {(countSecond * popularProducts[12].price).toFixed(2)}
                 </ProductPrice>
               </PriceDetail>
             </Product>

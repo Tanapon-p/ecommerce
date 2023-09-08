@@ -6,10 +6,8 @@ import Login from "./pages/Login";
 import ProductPage from "./pages/ProductPage";
 import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
-import { Routes, Route,ScrollRestoration  ,BrowserRouter, Router, Switch } from "react-router-dom";
-import Products from "./components/Products";
+import { Routes, Route } from "react-router-dom";
 import Product from "./components/Product";
-import { popularProducts } from "./data";
 import CatagoriesItem from "./components/CategoriesItem"
 
 function App() {
@@ -21,7 +19,6 @@ function App() {
       <Route path="Register" element={<Register />} />
       <Route path="Login" element={<Login />} />
       <Route path="Cart" element={<Cart />} />
-      {/* <Route path="ProductList" element={<ProductList />} /> */}
       <Route exact path="/" element ={<CatagoriesItem/>} />
       <Route exact path="/productlist/:catagoriesID" element ={<ProductList/>} />
       <Route exact path="/" element={<Product />} />

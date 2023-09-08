@@ -71,6 +71,7 @@ const Icon = styled.div`
   }
 `;
 
+// รับ Props (Item) จาก popularProducts ที่ทำการ .map มา
 const Product = ({ item }) => {
   const [clicked, setClicked] = useState(false);
 
@@ -87,6 +88,7 @@ const Product = ({ item }) => {
           <ShoppingCartOutlined />
         </Icon>
         <Icon>
+          {/* Dynamic URL Link โดยอ้างอิงค่าจาก props.id ที่รับค่ามา */}
           <Link
             to={`/product/${item.id}`}
             style={{ textDecoration: "none", color: "black" }}
@@ -95,6 +97,7 @@ const Product = ({ item }) => {
           </Link>
         </Icon>
         <Icon>
+          {/* ใช้ useState + Ternary oparetor เพื่อตรวจสอบว่าคลิกไปแล้วหรือยัง โดยจาก updateClicked() ในการตรวจสอบ */}
           {clicked ? (
             <Favorite onClick={updateClicked} style={{ color: "red" }} />
           ) : (
