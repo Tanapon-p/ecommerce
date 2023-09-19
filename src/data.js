@@ -29,7 +29,7 @@ export const categories = [
     id: 1,
     img: "https://i.pinimg.com/564x/5e/96/0e/5e960e970b6e2e05a31eac69d5e44ea1.jpg",
     title: "ELEGANT BLOUSE STYLE!",
-    cat: "women",
+    cat: "woman",
   },
   {
     id: 2,

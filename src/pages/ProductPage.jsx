@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { Add, Remove } from "@material-ui/icons";
-import { useState } from "react";
+
 import { mobile } from "../responsive";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { popularProducts } from "../data";
+import { publicRequest } from "../requestMethod";
+import axios from "axios";
 
 const Container = styled.div``;
 
@@ -120,9 +122,26 @@ const Button = styled.button`
 `;
 
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:5000/api/products/find/" + id
+        );
+        setProduct(res.data);
+      } catch {}
+    };
+    getProduct();
+  }, [id]);
+
   const [count, setCount] = useState(1);
   const { itemId } = useParams();
   const thisItem = popularProducts.find((item) => item.id === Number(itemId));
+  console.log(product);
 
   return (
     <Container>
@@ -130,27 +149,25 @@ const Product = () => {
       <Annoucement />
       <Wrapper>
         <ImgContainer>
-          <Image src={thisItem.img} />
+          <Image src={product && product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>{thisItem.name}</Title>
-          <Desc>{thisItem.desc}</Desc>
-          <Price>$ {thisItem.price * count} </Price>
+          <Title>{product && product.name}</Title>
+          <Desc>{product && product.desc}</Desc>
+          <Price>$ {product && product.price * count} </Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+              {product &&
+                product.color.map((c) => <FilterColor color={c} key={c} />)}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
+                {product &&
+                  product.size.map((s) => (
+                    <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                  ))}
               </FilterSize>
             </Filter>
           </FilterContainer>

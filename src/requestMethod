@@ -1,0 +1,17 @@
+import axios from "axios";
+
+const BASE_URL = "http://localhost:5000/api/";
+const TOKEN =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDQ0YmQ4ZjA1YzZmNzYzZTgyYzI2MSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTUxMzU1NDAsImV4cCI6MTY5NTM5NDc0MH0.7hd6YDpDuwO1MTgoy26fqVWDcj_27cGtBxo_EHMDcAs";
+
+const publicRequest = axios.create({
+  baseURL: BASE_URL,
+});
+
+const userRequest = axios.create({
+  baseURL: BASE_URL,
+  header: { token: `Bearer ${TOKEN}` },
+});
+
+
+export {publicRequest,userRequest};

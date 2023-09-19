@@ -80,7 +80,7 @@ const Product = ({ item }) => {
   }
 
   return (
-    <Container key={item.id}>
+    <Container key={item._id}>
       <Circle />
       <Image src={item.img} />
       <Info>
@@ -90,7 +90,7 @@ const Product = ({ item }) => {
         <Icon>
           {/* Dynamic URL Link โดยอ้างอิงค่าจาก props.id ที่รับค่ามา */}
           <Link
-            to={`/product/${item.id}`}
+            to={`/product/${item._id}`}
             style={{ textDecoration: "none", color: "black" }}
           >
             <SearchOutlined />
