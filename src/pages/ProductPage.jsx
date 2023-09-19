@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import { Add, Remove } from "@material-ui/icons";
 import { useState } from "react";
 import { mobile } from "../responsive";
-import { ScrollRestoration, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { popularProducts } from "../data";
 
 const Container = styled.div``;
@@ -134,9 +134,7 @@ const Product = () => {
         </ImgContainer>
         <InfoContainer>
           <Title>{thisItem.name}</Title>
-          <Desc>
-            {thisItem.desc}
-          </Desc>
+          <Desc>{thisItem.desc}</Desc>
           <Price>$ {thisItem.price * count} </Price>
           <FilterContainer>
             <Filter>

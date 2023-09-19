@@ -40,7 +40,7 @@ const Option = styled.option``;
 
 const ProductList = () => {
   const { catagoriesID } = useParams();
-  const thiscatagories = categories.find((item) => item.id === Number(catagoriesID));
+  const thiscatagories = categories.find((item) => item.cat === catagoriesID);
 
   return (
     <Container>

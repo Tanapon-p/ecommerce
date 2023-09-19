@@ -50,12 +50,12 @@ const Button = styled.button`
 
 const CategoriesItem = ({ item }) => {
   return (
-    <Container>
+    <Container key={item.id}>
       <Image src={item.img} />
       <Info>
         <Title>{item.title}</Title>
         <Link
-          to={`/productlist/${item.id}`}
+          to={`/products/${item.cat}`}
           style={{ textDecoration: "none", color: "black" }}
         >
           <Button>SHOP NOW</Button>

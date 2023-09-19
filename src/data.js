@@ -1,4 +1,4 @@
-import { LoremIpsum, loremIpsum } from "lorem-ipsum";
+import { loremIpsum } from "lorem-ipsum";
 
 export const sliderItems = [
   {
@@ -29,16 +29,19 @@ export const categories = [
     id: 1,
     img: "https://i.pinimg.com/564x/5e/96/0e/5e960e970b6e2e05a31eac69d5e44ea1.jpg",
     title: "ELEGANT BLOUSE STYLE!",
+    cat: "women",
   },
   {
     id: 2,
     img: "https://i.pinimg.com/564x/91/28/7b/91287ba4eac9a2770e2b0cefdd32c612.jpg",
     title: "LOVELY DRESS STYLE",
+    cat:"dress"
   },
   {
     id: 3,
     img: "https://i.pinimg.com/564x/d2/66/ed/d266edfee031026f0b248a8ef94726a1.jpg",
     title: "CASUAL STYLE!",
+    cat:"casual"
   },
 ];
 

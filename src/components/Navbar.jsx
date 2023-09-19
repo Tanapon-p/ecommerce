@@ -1,10 +1,9 @@
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
-import { Badge, colors } from "@material-ui/core";
+import { Badge } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
-import Register from "../pages/Register";
 
 const Container = styled.div`
   height: 60px;
@@ -19,7 +18,7 @@ const Wrapper = styled.div`
   ${mobile({ padding: "10px 0px" })}
 `;
 
-const navLink = styled.div``;
+// const navLink = styled.div``;
 
 const Left = styled.div`
   flex: 1;
